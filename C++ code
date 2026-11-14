@@ -282,7 +282,7 @@ class MatchResult{
 };
  int main(){
     Fixture match1(1, "Jamaica", "Trinidad",
-    "National Stadium", "2026-11-20", "7:00 PM", "Scheduled");
+    "National Stadium", "2026-11-17", "5:00 PM", "Scheduled");
     
     MatchResult result1(1,1,2,1);
     result1.calculateWinner(match1);
