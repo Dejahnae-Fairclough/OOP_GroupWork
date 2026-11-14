@@ -1,0 +1,302 @@
+#include <iostream>
+#include <string>
+#include <cstdio>
+using namespace std;
+
+    class Person{
+        protected:
+        int id;
+        string name;
+        int age;
+        string gender;
+        
+        public: 
+        Person(){
+            id = 0;
+            name = "";
+            age = 0;
+            gender = "";
+        }
+        
+        Person (int i, string n, int a, string g){
+        id = i;
+        name = n;
+        age = a;
+        gender = g;}
+        
+        void setId(int i){
+            id = i;
+        }
+        
+        int getId(){
+        return id;
+        }
+        
+        void setName(string n){
+            name = n;
+        }
+        
+        string getName(){
+            return name;
+        }
+        
+        void setAge(int a){
+            if (a >= 0){
+            age = a;
+            }
+            else {
+                cout << "Invalid age" << endl;
+            }
+        }
+        
+        int getAge(){
+            return age;
+        }
+        
+        void setGender(string g){
+            gender = g;
+        }
+        
+        string getGender(){
+            return gender;
+        }
+        
+        virtual void displayDetails() = 0;
+    };
+ 
+ class Fixture{
+     private:
+        int fixtureId;
+        string hometeam;
+        string awayteam;
+        string stadium;
+        string date;
+        string time;
+        string status;
+        
+    public:
+        Fixture(){
+            fixtureId = 0;
+            hometeam = "";
+            awayteam = "";
+            stadium = "";
+            date = "";
+            time = "";
+            status = "Scheduled";
+        }
+        
+        Fixture(int fId, string ht, string at,
+         string sd, string dt, string t, string st){
+            fixtureId = 0;
+            hometeam = "";
+            awayteam = "";
+            stadium = "";
+            date = "";
+            time = "";
+            status = "Scheduled";
+            
+            
+            setfixtureId(fId);
+            sethometeam(ht);
+            setawayteam(at);
+            setstadium(sd);
+            setdate(dt);
+            settime(t);
+            setstatus(st);
+        }
+        
+        void setfixtureId(int fId){
+            if (fId > 0)
+            {
+          fixtureId = fId;  
+            }
+            else
+            { cout << "Invalid fixure Id" << endl;}
+        }
+        
+        int getfixtureId(){
+            return fixtureId;
+        }
+        
+        void sethometeam(string ht){
+            if (ht != "" && ht != awayteam){
+                hometeam = ht;  
+            }
+            else {
+                cout << "Invalid Home team" << endl;
+            }
+        }
+        
+        string gethometeam(){
+            return hometeam;
+        }
+        
+        void setawayteam(string at){
+            if (at != "" && at != hometeam){
+                awayteam = at;  
+            }
+            else {
+                cout << "Invalid Away Team" << endl;
+            }
+        }
+        
+        string getawayteam(){
+            return awayteam;
+        }
+        
+        void setstadium(string sd){
+          stadium = sd;  
+        }
+        
+        string getstadium(){
+            return stadium;
+        }
+        
+        void setdate(string dt){
+          date = dt;  
+        }
+        
+        string getdate(){
+            return date;
+        }
+        
+        void settime(string t){
+          time = t;  
+        }
+        
+        string gettime(){
+            return time;
+        }
+        
+        void setstatus(string st){
+            if ( st == "Scheduled" || st == "In Progress" || st == "Completed" || st == "Postponed"){
+                status = st;
+            }
+            else {
+                cout << "Invalid Status" << endl;
+            }
+        }
+        
+        string getstatus(){
+            return status;
+        }
+ };
+
+class MatchResult{
+    private:
+        int resultId;
+        int fixtureId;
+        int homeScore;
+        int awayScore;
+        string winner;
+
+    public:
+        MatchResult(){
+            resultId = 0;
+            fixtureId = 0;
+            homeScore = 0;
+            awayScore = 0;
+            winner = "";
+        }
+    
+    MatchResult(int rId, int fId, int hs, int as){
+        resultId = 0;
+        fixtureId = 0;
+        homeScore = 0;
+        awayScore = 0;
+        winner = "";
+            
+        setresultId (rId);
+        setfixtureId (fId);
+        sethomeScore (hs);
+        setawayScore (as);
+    }
+    
+    void setresultId( int rId){
+        if (rId > 0){
+            resultId = rId;
+        }
+        else {
+            cout << "Invalid Result ID" << endl;
+        }
+    }
+    
+    int getresultId(){
+        return resultId;
+    }
+    
+            void setfixtureId(int fId){
+            if (fId > 0)
+            {
+          fixtureId = fId;  
+            }
+            else
+            { cout << "Invalid fixure Id" << endl;}
+        }
+        
+        int getfixtureId(){
+            return fixtureId;
+        }
+    
+    void sethomeScore(int hs){
+        if ( hs >= 0){
+            homeScore = hs;
+        }
+        else {
+            cout << "Invalid Home Score" << endl;
+        }
+    }
+    
+    int gethomeScore(){
+        return homeScore;
+    }
+    
+    void setawayScore(int as){
+        if ( as >= 0){
+            awayScore = as;
+        }
+        else {
+            cout << "Invalid Away Score" << endl;
+        }
+    }
+    
+    int getawayScore(){
+        return awayScore;
+    }
+    
+    void calculateWinner(Fixture Match){
+        if (homeScore > awayScore) {
+            winner = Match.gethometeam();
+        }
+        else if (awayScore > homeScore){
+            winner = Match.getawayteam();
+        }
+        else {
+            winner = "draw";
+        }
+    }
+    
+    string getWinner(){
+        return winner;
+    }
+};
+ int main(){
+    Fixture match1(1, "Jamaica", "Trinidad",
+    "National Stadium", "2026-11-20", "7:00 PM", "Scheduled");
+    
+    MatchResult result1(1,1,2,1);
+    result1.calculateWinner(match1);
+
+    cout << "Fixture ID: " << match1.getfixtureId() << endl;
+    cout << "Home Team: " << match1.gethometeam() << endl;
+    cout << "Away Team: " << match1.getawayteam() << endl;
+    cout << "Stadium: " << match1.getstadium() << endl;
+    cout << "Date: " << match1.getdate() << endl;
+    cout << "Time: " << match1.gettime() << endl;
+    cout << "Status: " << match1.getstatus() << endl;
+    
+    cout << "Home Score: " << result1.gethomeScore() << endl;
+    cout << "Away Score: " << result1.getawayScore() << endl;
+    cout << "Winner: " << result1.getWinner() << endl;
+    return 0;
+}
