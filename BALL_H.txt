@@ -1,0 +1,82 @@
+#ifndef BALL_H
+#define BALL_H
+#include "Merchandise.h"
+class Ball : public Merchandise
+{
+protected:
+	float weight;
+	char* material;
+	char* color;
+	char* size;
+	char* brand;
+	char* countryOfOrigin;
+
+public:
+
+	Ball() : Merchandise() {
+		this->weight = 0;
+		this->material = (char*)"";
+		this->color = (char*)"";
+		this->size = (char*)"";
+		this->brand = (char*)"";
+		this->countryOfOrigin = (char*)"";
+	}
+	Ball(int id, char* name, double price, char* Type, float weight, char* material, char* color, char* size, char* brand, char* countryOfOrigin) : Merchandise(id, name, price, Type) {
+		this->weight = weight;
+		this->material = material;
+		this->color = color;
+		this->size = size;
+		this->brand = brand;
+		this->countryOfOrigin = countryOfOrigin;
+	}
+	float getWeight() {
+		return weight;
+	}
+	char* getMaterial() {
+		return material;
+	}
+	char* getColor() {
+		return color;
+	}
+	char* getSize() {
+		return size;
+	}
+	char* getBrand() {
+		return brand;
+	}
+	char* getCountryOfOrigin() {
+		return countryOfOrigin;
+	}
+	void setWeight(float weight) {
+		this->weight = weight;
+	}
+	void setMaterial(char* material) {
+		this->material = material;
+	}
+	void setColor(char* color) {
+		this->color = color;
+	}
+	void setSize(char* size) {
+		this->size = size;
+	}
+	void setBrand(char* brand) {
+		this->brand = brand;
+	}
+	void setCountryOfOrigin(char* countryOfOrigin) {
+		this->countryOfOrigin = countryOfOrigin;
+	}
+	void taxGCT() override {
+		this->price = this->price * 1.15;
+	}
+	void Display() override {
+		Merchandise::Display();
+		std::cout << "Ball Weight: " << this->weight << std::endl;
+		std::cout << "Ball Material: " << this->material << std::endl;
+		std::cout << "Ball Color: " << this->color << std::endl;
+		std::cout << "Ball Size: " << this->size << std::endl;
+		std::cout << "Ball Brand: " << this->brand << std::endl;
+		std::cout << "Ball Country of Origin: " << this->countryOfOrigin << std::endl;
+	}	
+};
+#endif
+

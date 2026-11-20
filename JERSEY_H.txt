@@ -1,0 +1,78 @@
+#ifndef JERSEY_H
+#define JERSEY_H
+#include "Merchandise.h"	
+
+class Jersey : public Merchandise
+{
+protected:
+
+	char* size;
+	char* color;
+	char* material;
+	char* teamName;
+
+public:
+	Jersey() : Merchandise() {
+		this->size = (char*)"";
+		this->color = (char*)"";
+		this->material = (char*)"";
+		this->teamName = (char*)"";
+	}
+	Jersey(int id, char* name, double price, char* Type, char* size, char* color, char* material, char* teamName) : Merchandise(id, name, price, Type) {
+		this->size = size;
+		this->color = color;
+		this->material = material;
+		this->teamName = teamName;
+	}	
+	Jersey(Jersey* xJersey) : Merchandise(xJersey) {
+		this->size = xJersey->size;
+		this->color = xJersey->color;
+		this->material = xJersey->material;
+		this->teamName = xJersey->teamName;
+		this->Type = xJersey->Type;
+	}
+	void setSize(char* size) {
+		this->size = size;
+	}
+	void setColor(char* color) {
+		this->color = color;
+	}
+	void setMaterial(char* material) {
+		this->material = material;
+	}
+	void setTeamName(char* teamName) {
+		this->teamName = teamName;
+	}
+
+	char* getSize() {
+		return size;
+	}
+	char* getColor() {
+		return color;
+	}
+	char* getMaterial() {
+		return material;
+	}
+	char* getTeamName() {
+		return teamName;
+	}
+
+	void taxGCT() override {
+		this->price = this->price * 1.15;
+	}
+	void Display() override {
+		std::cout << "Jersey ID: " << this->id << std::endl;
+		std::cout << "Jersey Name: " << this->name << std::endl;
+		std::cout << "Jersey Price: " << this->price << std::endl;
+		std::cout << "Jersey Type: " << this->Type << std::endl;
+		std::cout << "Jersey Size: " << this->size << std::endl;
+		std::cout << "Jersey Color: " << this->color << std::endl;
+		std::cout << "Jersey Material: " << this->material << std::endl;
+		std::cout << "Jersey Team Name: " << this->teamName << std::endl;
+	}
+
+
+
+};
+
+#endif 

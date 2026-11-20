@@ -1,0 +1,39 @@
+#ifndef MERCHANDISE_H
+#define MERCHANDISE_H
+#include "Product.h"
+
+class Merchandise : public Product
+{
+protected:
+	char* Type;
+
+public:
+	Merchandise() : Product() {
+		this->Type = (char*)"";
+	}
+	Merchandise(int id, char* name, double price, char* Type) : Product(id, name, price) {
+		this->Type = Type;
+	}
+	Merchandise(Merchandise* xMerchandise) : Product(xMerchandise) {
+		this->Type = xMerchandise->Type;
+	}
+	char* getType() {
+		return Type;
+	}
+	void setType(char* Type) {
+		this->Type = Type;
+	}
+	void taxGCT() override {
+		this->price = this->price * 1.15;
+	}
+	void Display() override {
+		std::cout << "Merchandise ID: " << this->id << std::endl;
+		std::cout << "Merchandise Name: " << this->name << std::endl;
+		std::cout << "Merchandise Price: " << this->price << std::endl;
+		std::cout << "Merchandise Type: " << this->Type << std::endl;
+	}
+	
+
+};
+#endif
+

@@ -1,0 +1,39 @@
+#ifndef FOOD_H
+#define FOOD_H
+
+#include "Product.h"
+class Food : public Product	
+{
+protected:
+	int quantity;
+	
+
+public:
+	Food() : Product() {
+		this->quantity = 0;
+	}
+	Food (int quantity, int id, char* name, double price) : Product(id, name, price) {
+		this->quantity = quantity;
+	}
+	Food(Food * xFood) : Product(xFood) {
+		this->quantity = xFood->quantity;
+	}
+	int getQuantity() {
+		return quantity;
+	}
+	void setQuantity(int quantity) {
+		this->quantity = quantity;
+	}	
+
+	void taxGCT() override {
+		this->price = this->price * 1.15;
+	}	
+	void Display() override {
+		std::cout << "Food ID: " << this->id << std::endl;
+		std::cout << "Food Name: " << this->name << std::endl;
+		std::cout << "Food Price: " << this->price << std::endl;
+		std::cout << "Food Quantity: " << this->quantity << std::endl;
+	}
+};
+#endif
+

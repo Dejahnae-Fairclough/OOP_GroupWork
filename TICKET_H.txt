@@ -1,0 +1,64 @@
+#ifndef TICKET_H
+#define TICKET_H
+#include "Product.h"
+
+class Ticket : public Product
+{
+
+protected:
+	char* TicketType;
+	char* TicketDate;
+
+public:
+	Ticket() :Product() {
+
+
+		this->TicketType = (char*)"";
+		this->TicketDate = (char*)"";
+	}
+	Ticket(int id, char* name, double price, char* TicketType, char* TicketDate) : Product(id, name, price)
+	{
+		this->TicketType = TicketType;
+		this->TicketDate = TicketDate;
+	}
+	Ticket(Ticket* xTicket) : Product(xTicket)
+	{
+		this->TicketType = xTicket->TicketType;
+		this->TicketDate = xTicket->TicketDate;
+	}
+	void setTicketType(char* TicketType) {
+		this->TicketType = TicketType;
+	}
+	void setTicketDate(char* TicketDate) {
+		this->TicketDate = TicketDate;
+	}
+	char* getTicketType() {
+		return TicketType;
+	}
+	char* getTicketDate() {
+		return TicketDate;
+	}
+	void taxGCT() override {
+		this->price = this->price * 1.15;
+	}
+	void  Display()override {
+		std::cout << "Ticket ID: " << this->id << std::endl;
+		std::cout << "Ticket Name: " << this->name << std::endl;
+		std::cout << "Ticket Price: " << this->price << std::endl;
+		std::cout << "Ticket Type: " << this->TicketType << std::endl;
+		std::cout << "Ticket Date: " << this->TicketDate << std::endl;
+	}
+
+
+
+
+
+
+
+
+
+
+};
+
+#endif
+

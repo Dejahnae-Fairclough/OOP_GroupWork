@@ -1,0 +1,36 @@
+#ifndef BEVERAGES_H
+#define  BEVERAGES_H
+#include "Product.h"
+#include <iostream>
+
+class Beverages : public Product
+{
+protected:
+	float litres;
+
+public:
+	Beverages() : Product() {
+		this->litres = 0;
+	}
+	Beverages(int id, char* name, double price, float litres) : Product(id, name, price) {
+		this->litres = litres;
+	}
+	float getLitres() {
+		return litres;
+	}
+	void setLitres(float litres) {
+		this->litres = litres;
+	}
+	void taxGCT() override {
+		this->price = this->price * 1.15;
+	}
+	void Display() override {	
+		std::cout << "Beverage ID: " << this->id << std::endl;
+		std::cout << "Beverage Name: " << this->name << std::endl;
+		std::cout << "Beverage Price: " << this->price << std::endl;
+		std::cout << "Beverage Litres: " << this->litres << std::endl;
+	}	
+	
+};
+#endif
+

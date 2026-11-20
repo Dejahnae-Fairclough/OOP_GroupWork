@@ -1,0 +1,24 @@
+#ifndef STADIUMSHOP_H
+#define STADIUMSHOP_H
+#include "Ball.h"
+#include "Jersey.h"
+#include "Beverages.h"
+#include "Food.h"
+
+class StadiumShop
+{
+protected:
+	Ball Fustal;
+	Ball MatchBall;
+	Jersey HomeJersey;
+	Jersey AwayJersey;
+	Food HotDog;
+	Beverages Juice;
+
+public:
+
+	virtual ~StadiumShop() {};
+	
+	virtual void DisplayShopItems() = 0;
+};
+#endif
